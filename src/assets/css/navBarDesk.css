@@ -1,0 +1,71 @@
+/* MainNav */
+.mainNav {
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+  background-color: #0b1622;
+  padding: 0 15px;
+}
+/* RightNavStarts  */
+.rightNav {
+  display: flex;
+  align-items: center;
+}
+
+/* RightNav Ends  */
+/* CenterNavStarts  */
+.centerNav {
+  display: flex;
+  align-items: center;
+  flex-shrink: 5;
+
+  min-width: 0;
+}
+
+#navBarInp {
+  width: 39vw;
+  border: var(--navyBorder);
+  background-color: var(--navyBg);
+  height: 45px;
+  border-radius: 15px;
+  flex-shrink: 2;
+  color: white;
+  padding: 10px;
+  outline: none;
+  transition:
+    padding 0.15s ease-in-out,
+    border 0.15s ease-in-out;
+}
+#navBarInp:hover {
+  border: 1px solid #3b82f6;
+}
+#navBarInp:focus {
+  border: 2px solid #3b82f6;
+}
+/* CenterNavEnds */
+/* LeftNavStarts  */
+.leftNav {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+.navBtn {
+  border: var(--navyBorder);
+  color: #f9fafb;
+
+  height: 40px;
+  padding: 5px;
+  font-family: "Courier New", Courier, monospace;
+
+  border-radius: 10px;
+  transition:
+    padding 0.15s ease-in-out,
+    border 0.15s ease-in-out,
+    font-size 0.15s ease-in-out;
+}
+.navBtn:hover {
+  border: #3b82f6 1px solid;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 10px;
+}

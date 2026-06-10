@@ -1,0 +1,70 @@
+.filterAnimeWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: clamp(10px, 20px, 40px);
+}
+
+.selectDiv {
+  cursor: pointer;
+  width: 15%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.selectDiv h5 {
+  transform: translateX(5px);
+  color: #bcb1cd;
+}
+.filterSelect {
+  border: none;
+  color: #83838f;
+  appearance: none;
+  border-radius: 8px;
+  outline: none;
+  overflow-x: hidden;
+}
+.selectBox {
+  border-radius: 8px;
+  color: #83838f;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 10px;
+}
+.selectInp {
+  color: inherit;
+  outline: none;
+  width: 40%;
+  border: none;
+}
+.selectOptions {
+  position: relative;
+}
+.selectList {
+  max-height: 60vh;
+  overflow: auto;
+  color: #83838f;
+  width: 100%;
+  position: absolute;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  z-index: 10;
+
+  list-style: none;
+}
+.selectOption {
+  padding: 8px;
+  border-radius: 5px;
+}
+@media (max-width: 800px) {
+  .selectDiv {
+    width: 35%;
+  }
+  .filterAnimeWrapper {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}

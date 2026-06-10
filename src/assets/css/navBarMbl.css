@@ -1,0 +1,43 @@
+/* main */
+.mainNavMbl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: rgba(21, 31, 46, 1);
+  padding: 0 20px;
+}
+/* RightSide */
+.rightNavMbl {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Center */
+.centerNavMbl {
+  display: flex;
+  align-items: center;
+}
+.navSearchMbl {
+  width: 45vw;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(21, 31, 46, 0.8);
+
+  border-radius: 8px;
+  flex-shrink: 2;
+  color: white;
+  padding: 10px;
+  outline: none;
+  transition:
+    padding 0.15s ease-in-out,
+    border 0.15s ease-in-out;
+}
+.navSearchMbl:hover {
+  border: 1px solid #3b82f6;
+}
+.navSearchMbl:focus {
+  border: 2px solid #3b82f6;
+}
+/* RightSide */

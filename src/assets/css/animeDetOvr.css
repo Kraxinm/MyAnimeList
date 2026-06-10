@@ -1,0 +1,202 @@
+.animeDetOvr {
+  background-color: #0d121b;
+}
+.transparentNavBar {
+  opacity: 0.6;
+}
+
+.bannerImageBox {
+  height: 300px;
+  background: 50% 40%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  margin-top: -65px;
+}
+
+/* overViewGrid */
+.overViewGrid {
+  margin-top: 10px;
+  display: grid;
+
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+}
+/* leftOVr  */
+.cardImage {
+  transform: translateY(-40px);
+  border-radius: 10px;
+}
+.leftSideOvr {
+  display: flex;
+  flex-direction: column;
+}
+.aniOvrAddDiv {
+  width: 100%;
+  display: flex;
+  transform: translateY(-40px);
+}
+.aniOvrAdd {
+  width: 20%;
+}
+.ovrAddToWhat {
+  width: 80%;
+
+  display: flex;
+}
+.ovrAddToIcon {
+  color: white;
+  background-color: black;
+  border-radius: 50%;
+}
+/* Right OVr  */
+.titleAndDesc {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+.descBtn {
+  width: 20%;
+
+  align-self: center;
+  border: var(--navyBorder);
+  color: #f9fafb;
+  background-color: black;
+
+  height: 40px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.descBtn:hover {
+  border: 3px solid #7f77dd;
+}
+.animeTitle {
+  color: #a0aec0;
+}
+.animeDesc {
+  color: rgb(160, 170, 185);
+}
+.descBox {
+  background-color: var(--navyBg);
+  padding: 20px;
+  border-radius: 5px;
+}
+.descLineControl {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 8;
+  overflow: hidden;
+}
+
+/* Genres   */
+
+.genres {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btnPills {
+  border: 1px solid #2d1f6e;
+  background-color: #1a1040;
+  color: #9d8fef;
+  padding: 5px;
+  width: 10%;
+  font-size: small;
+
+  height: 50px;
+  border-radius: 5%;
+}
+/* bottomGrid */
+.bottomGrid {
+  margin-top: 20px;
+  display: flex;
+  gap: 5%;
+  flex-direction: column;
+}
+.charactersAndRecomendation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* stats  */
+.ovrStats {
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  overflow-y: hidden;
+
+  width: 100%;
+  padding: 20px 20px;
+  border-radius: 2%;
+  justify-content: start;
+  background-color: #0a1628;
+  gap: 20px;
+}
+.statPillsBox {
+  font-size: small;
+  text-transform: uppercase;
+  display: flex;
+  border-bottom: var(--navyBorder);
+  gap: 10px;
+  flex-direction: column;
+  width: 100%;
+  white-space: nowrap;
+}
+.statLabel {
+  color: #4a6080;
+}
+.statPills {
+  color: #8b9bb8;
+}
+
+@media (max-width: 1024px) {
+}
+@media (max-width: 767px) {
+  .bannerImageBox {
+    height: 200px;
+  }
+  /* overViewGrid  */
+  .overViewGrid {
+    grid-template-columns: 1fr;
+  }
+  /* LeftSide GRid  */
+  .leftSideOvr {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .cardImage {
+    width: 30%;
+    transform: translateY(-30px);
+  }
+
+  .aniOvrAddDiv {
+    align-items: center;
+    width: 100%;
+    transform: translateY(0);
+  }
+
+  /* leftSideGrid  */
+  .descBtn {
+    width: 40%;
+  }
+  /* Gernes  */
+  .btnPills {
+    font-size: xx-small;
+    width: 20%;
+  }
+  /* BottomGrid  */
+  /* stats  */
+
+  .statPillsBox {
+    font-size: x-small;
+    white-space: nowrap;
+  }
+  .statPills {
+    font-size: xx-small;
+  }
+}

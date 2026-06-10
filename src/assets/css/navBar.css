@@ -1,0 +1,14 @@
+.navBarWrapper{
+    position: sticky;
+    top: 0px;
+    z-index: 2;
+}
+
+.hideNavBar{
+    transform: translateY(-100%);
+   
+    ;
+}
+.hiddenNavBar{
+ position:static;
+}

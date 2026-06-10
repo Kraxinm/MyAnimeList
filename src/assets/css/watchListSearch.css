@@ -1,0 +1,20 @@
+.watchListSearchWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.watchListSearchInp {
+  padding: 20px;
+  color: #a8b2c7;
+  outline: 3px solid transparent;
+  transition: outline-color 0.2s ease-in;
+  border: var(--navyBorder);
+  width: 50vw;
+  height: 40px;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .watchListSearchInp {
+    width: 60vw;
+  }
+}

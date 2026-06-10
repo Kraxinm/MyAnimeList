@@ -1,0 +1,42 @@
+.errorWrapper {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.errorBox {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 50px;
+  border-radius: 16px;
+}
+.errorBox h4 {
+  color: #a0aec0;
+}
+.errorBox p {
+  text-align: center;
+  font-size: 0.9rem;
+  max-width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #64748b;
+}
+.errorIcon {
+  color: #b71c1c;
+  background-color: #d32f2f4d;
+  padding: 12px;
+  border-radius: 50%;
+}
+.refreshPageBtn {
+  background-color: #ffffff1a;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #ffffff;
+  border: var(--navyBorder);
+}
