@@ -69,11 +69,12 @@ function SearchAnime() {
     handleFetch(1);
   }, [currentQuerry]);
   useRefetch({
-    currentPage: setCurrentPage,
+    currentPage: currentPage,
     setIsLoading: setIsLoading,
     setErrMsg: setErrMsg,
     handleFetch: handleFetch,
   });
+
   useInfiniteScroll({
     senitalRef: senitalRef,
     setCurrentPage: setCurrentPage,
