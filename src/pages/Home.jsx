@@ -155,6 +155,7 @@ function Home() {
   }
 
   useEffect(() => {
+    setLoading(true);
     handleFilteredFetch(currentPage);
   }, [filterSelected]);
   useEffect(() => {
@@ -172,7 +173,7 @@ function Home() {
     currentPage: currentPage,
     handleFetch: handleFilteredFetch,
   });
-  if (loading && filteredAnime.length === 0) return <LoadingScreen />;
+  if (loading && filteredAnime.length <= 1) return <LoadingScreen />;
   if (errorMsg) return <ErrorComponent />;
   return (
     <div className="listPadding">
