@@ -92,9 +92,11 @@ function AnimeDetailsOvr({ animeData }) {
           <AnimeCardNotification key={notificationKey} />
         </motion.div>
         <div className="titleAndDesc">
-          <h4 className="animeTitle">{animeData.studios?.nodes[0]?.name}</h4>
           <h4 className="animeTitle">
             {animeData.title.english || animeData.title.romaji}
+          </h4>
+          <h4 className="animeTitle">
+            Studio: {animeData.studios?.nodes[0]?.name}
           </h4>
           <div className="descBox">
             <motion.p
