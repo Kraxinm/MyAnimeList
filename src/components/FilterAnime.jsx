@@ -17,6 +17,7 @@ function FilterAnime({
     Sort: false,
     Season: false,
     Format: false,
+    Year: false,
   });
 
   const filterOptions = [
@@ -85,6 +86,16 @@ function FilterAnime({
           value: "UPDATED_AT_DESC",
         },
       ],
+    },
+    {
+      label: "Year",
+      options: Array.from(
+        { length: new Date().getFullYear() - 1940 + 1 },
+        (_, i) => {
+          const year = new Date().getFullYear() - i;
+          return { id: `year-${year}`, label: String(year), value: year };
+        },
+      ),
     },
     {
       label: "Season",

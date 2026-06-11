@@ -17,6 +17,7 @@ function Home() {
     Sort: "",
     Season: "",
     Format: "",
+    Year: "",
   });
   const [hasMore, setHasMore] = useState(false);
   const [errorMsg, setErrMsg] = useState("");
@@ -27,6 +28,7 @@ function Home() {
     Sort: null,
     Season: null,
     Format: null,
+    Year: null,
   });
   const isFilterSelected = Object.values(filterSelected).some(
     (value) => value !== null,
@@ -41,25 +43,26 @@ function Home() {
     try {
       const query = `
       query ($genre: String, $sort: [MediaSort], $season: MediaSeason, 
-      $format: MediaFormat , 
-      $page: Int, $perPage: Int ) {
-        filtered: Page(page: $page, perPage: $perPage) {
-  pageInfo {
-    hasNextPage
+$format: MediaFormat, $seasonYear: Int,
+$page: Int, $perPage: Int) {
+  filtered: Page(page: $page, perPage: $perPage) {
+    pageInfo {
+      hasNextPage
+    }
+    media(type: ANIME, genre: $genre, sort: $sort, season: $season, 
+    format: $format, seasonYear: $seasonYear, status_not: NOT_YET_RELEASED) {
+      id
+      title { romaji english }
+      coverImage { large medium extraLarge color }
+      averageScore
+      seasonYear
+      status
+      genres
+      format
+      episodes
+    }
   }
-          media(type: ANIME, genre: $genre, sort: $sort, season: $season, format: $format ,status_not: NOT_YET_RELEASED) {
-            id
-            title { romaji english }
-            coverImage { large medium extraLarge color }
-            averageScore
-            seasonYear
-            status
-            genres
-            format
-            episodes
-          }
-        }
-      }
+}
     `;
 
       const variables = {
@@ -71,6 +74,7 @@ function Home() {
       if (filterSelected.Sort) variables.sort = [filterSelected.Sort];
       if (filterSelected.Season) variables.season = filterSelected.Season;
       if (filterSelected.Format) variables.format = filterSelected.Format;
+      if (filterSelected.Year) variables.seasonYear = filterSelected.Year;
       const res = await axios.post("", { query, variables });
 
       const pageData = res.data.data.filtered;
