@@ -23,7 +23,6 @@ function AnimeRow({ rowNameDetails, animeRowToRender, isRecomendation }) {
       {rowNameDetails.status && (
         <div className="rowTitle">
           <h4> {rowNameDetails.name}</h4>
-          <h5>View All</h5>
         </div>
       )}
       <motion.div
