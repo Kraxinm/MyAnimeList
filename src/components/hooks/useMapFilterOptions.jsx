@@ -18,7 +18,6 @@ function useMapFilterOptions({
 
     tempSelected[currentItem.label] = item.value;
     tempShow[currentItem.label] = false;
-    console.log(tempQuerry);
     setFilterQuerry(tempQuerry);
     setFilterSelected(tempSelected);
     setShowFilterItems(tempShow);

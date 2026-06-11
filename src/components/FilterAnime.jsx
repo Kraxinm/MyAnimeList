@@ -5,7 +5,12 @@ import { CiSquareRemove } from "react-icons/ci";
 import { AnimatePresence, motion, scale } from "motion/react";
 import { use, useEffect, useState } from "react";
 import MapFilterOptions from "./hooks/useMapFilterOptions.jsx";
-function FilterAnime({ filterSelected, setFilterSelected }) {
+function FilterAnime({
+  filterSelected,
+  setFilterSelected,
+  filterQuerry,
+  setFilterQuerry,
+}) {
   // const year = new Date().getFullYear();
   const [showFilterItems, setShowFilterItems] = useState({
     Genre: false,
@@ -13,12 +18,7 @@ function FilterAnime({ filterSelected, setFilterSelected }) {
     Season: false,
     Format: false,
   });
-  const [filterQuerry, setFilterQuerry] = useState({
-    Genre: "",
-    Sort: "",
-    Season: "",
-    Format: "",
-  });
+
   const filterOptions = [
     {
       label: "Genre",

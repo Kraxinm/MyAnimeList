@@ -12,7 +12,13 @@ import useInfiniteScroll from "../components/hooks/useInfiniteScroll.js";
 import useRefetch from "../components/hooks/useRefetch.js";
 
 function Home() {
-  const [hasMore, setHasMore] = useState();
+  const [filterQuerry, setFilterQuerry] = useState({
+    Genre: "",
+    Sort: "",
+    Season: "",
+    Format: "",
+  });
+  const [hasMore, setHasMore] = useState(false);
   const [errorMsg, setErrMsg] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const homeSenitalRef = useRef(null);
@@ -155,8 +161,11 @@ function Home() {
   }
 
   useEffect(() => {
+    setFilteredAnime([]);
+    setCurrentPage(currentPage);
+    setHasMore(false);
     setLoading(true);
-    handleFilteredFetch(currentPage);
+    handleFilteredFetch(1);
   }, [filterSelected]);
   useEffect(() => {
     handleStaticFetch();
@@ -173,13 +182,21 @@ function Home() {
     currentPage: currentPage,
     handleFetch: handleFilteredFetch,
   });
+  useEffect(() => {
+    if (!isFilterSelected && filteredAnime.length > 0) {
+      setLoading(false);
+    }
+  }, [filterSelected]);
   if (loading && filteredAnime.length <= 1) return <LoadingScreen />;
+
   if (errorMsg) return <ErrorComponent />;
   return (
     <div className="listPadding">
       <FilterAnime
         setFilterSelected={setFilterSelected}
         filterSelected={filterSelected}
+        filterQuerry={filterQuerry}
+        setFilterQuerry={setFilterQuerry}
       />
       {!isFilterSelected ? (
         <div>
