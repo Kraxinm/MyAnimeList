@@ -11,7 +11,6 @@ function FilterAnime({
   filterQuerry,
   setFilterQuerry,
 }) {
-  // const year = new Date().getFullYear();
   const [showFilterItems, setShowFilterItems] = useState({
     Genre: false,
     Sort: false,

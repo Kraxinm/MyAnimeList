@@ -15,9 +15,14 @@ function useMapFilterOptions({
     let tempShow = { ...showFilterItems };
 
     tempQuerry[currentItem.label] = item.label;
-
     tempSelected[currentItem.label] = item.value;
     tempShow[currentItem.label] = false;
+    if (currentItem.label === "Season" && !filterSelected.Year) {
+      const year = new Date().getFullYear();
+      tempSelected.Year = year;
+      tempQuerry.Year = year.toString();
+    }
+
     setFilterQuerry(tempQuerry);
     setFilterSelected(tempSelected);
     setShowFilterItems(tempShow);
