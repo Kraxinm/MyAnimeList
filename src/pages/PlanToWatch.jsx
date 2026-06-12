@@ -10,7 +10,7 @@ import WatchListSearch from "../components/WatchListSearch";
 function PlanToWatch() {
   let { lists } = useContext(watchListContext);
   const [watchlistQuerry, setWatchlistQuerry] = useState("");
-
+  const planToWatch = lists.planToWatch.data;
   return (
     <div className="listPadding">
       <WatchListSearch
@@ -18,13 +18,13 @@ function PlanToWatch() {
         watchlistQuerry={watchlistQuerry}
         setWatchListQuerry={setWatchlistQuerry}
       />
-      {lists.planToWatch && lists.planToWatch.length > 0 && (
+      {planToWatch && planToWatch.length > 0 && (
         <AnimeRow
           rowNameDetails={{ status: false }}
           animeRowToRender={
             watchlistQuerry
-              ? watchListFilterSearch(lists.planToWatch, watchlistQuerry)
-              : lists.planToWatch
+              ? watchListFilterSearch(planToWatch, watchlistQuerry)
+              : planToWatch
           }
         />
       )}

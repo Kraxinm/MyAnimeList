@@ -1,4 +1,5 @@
 import { createContext, useRef, useState } from "react";
+import removeAnimeFromPrevList from "./removeAnimeFromPrevLIst";
 
 export let watchListContext = createContext();
 
@@ -14,17 +15,28 @@ function WatchListConext({ children }) {
   ) {
     let dupedList = { ...lists };
     if (addOrRemove === "add") {
+      removeAnimeFromPrevList({
+        animeToRender: animeToRender,
+        item: item,
+        dupedLists: dupedList,
+      });
       if (currentItems.length > 0) {
         localStorage.setItem(
           `${item.item}`,
           JSON.stringify([...currentItems, animeToRender]),
         );
-        dupedList[item.item] = JSON.parse(localStorage.getItem(item.item));
+        dupedList[item.item] = {
+          key: item.item,
+          data: JSON.parse(localStorage.getItem(item.item)),
+        };
         setLists(dupedList);
       } else {
         localStorage.setItem(item.item, JSON.stringify([animeToRender]));
 
-        dupedList[item.item] = JSON.parse(localStorage.getItem(item.item));
+        dupedList[item.item] = {
+          key: item.item,
+          data: JSON.parse(localStorage.getItem(item.item)),
+        };
         setLists(dupedList);
       }
     } else if (addOrRemove === "remove") {
@@ -37,17 +49,32 @@ function WatchListConext({ children }) {
         ),
       );
 
-      dupedList[item.item] = JSON.parse(localStorage.getItem(item.item));
+      dupedList[item.item] = {
+        key: item.item,
+        data: JSON.parse(localStorage.getItem(item.item)),
+      };
       setLists(dupedList);
     }
 
     setShowAddDetails(false);
   }
   let [lists, setLists] = useState({
-    watching: JSON.parse(localStorage.getItem("watching")) || [],
-    completed: JSON.parse(localStorage.getItem("completed")) || [],
-    favourites: JSON.parse(localStorage.getItem("favourites")) || [],
-    planToWatch: JSON.parse(localStorage.getItem("planToWatch")) || [],
+    watching: {
+      key: "watching",
+      data: JSON.parse(localStorage.getItem("watching")) || [],
+    },
+    completed: {
+      key: "completed",
+      data: JSON.parse(localStorage.getItem("completed")) || [],
+    },
+    favourites: {
+      key: "favourites",
+      data: JSON.parse(localStorage.getItem("favourites")) || [],
+    },
+    planToWatch: {
+      key: "planToWatch",
+      data: JSON.parse(localStorage.getItem("planToWatch")) || [],
+    },
   });
   return (
     <watchListContext.Provider

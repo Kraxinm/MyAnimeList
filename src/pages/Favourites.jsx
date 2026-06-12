@@ -9,6 +9,7 @@ import watchListFilterSearch from "../components/WatchListSearchFilter";
 function Favourites() {
   const { lists } = useContext(watchListContext);
   const [watchlistQuerry, setWatchlistQuerry] = useState("");
+  const favourites = lists.favourites.data;
 
   return (
     <div className="listPadding">
@@ -17,13 +18,13 @@ function Favourites() {
         watchlistQuerry={watchlistQuerry}
         setWatchListQuerry={setWatchlistQuerry}
       />
-      {lists.favourites && lists.favourites.length > 0 && (
+      {favourites && favourites.length > 0 && (
         <AnimeRow
           rowNameDetails={{ status: false }}
           animeRowToRender={
             watchlistQuerry
-              ? watchListFilterSearch(lists.favourites, watchlistQuerry)
-              : lists.favourites
+              ? watchListFilterSearch(favourites, watchlistQuerry)
+              : favourites
           }
         />
       )}

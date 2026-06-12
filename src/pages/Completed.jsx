@@ -8,6 +8,7 @@ function Completed() {
   const { lists } = useContext(watchListContext);
   const [watchlistQuerry, setWatchlistQuerry] = useState("");
 
+  const completed = lists.completed.data;
   return (
     <div className="listPadding">
       <WatchListSearch
@@ -15,13 +16,13 @@ function Completed() {
         setWatchListQuerry={setWatchlistQuerry}
         currentWatchList="Completed"
       />
-      {lists.completed && lists.completed.length > 0 && (
+      {completed && completed.length > 0 && (
         <AnimeRow
           rowNameDetails={{ status: false }}
           animeRowToRender={
             watchlistQuerry
-              ? watchListFilterSearch(lists.completed, watchlistQuerry)
-              : lists.completed
+              ? watchListFilterSearch(completed, watchlistQuerry)
+              : completed
           }
         />
       )}

@@ -42,7 +42,7 @@ function AnimeAdd({ animeOvrOrno, showAdd, animeToRender }) {
     let currentItems;
 
     if (lists[item.item]) {
-      currentItems = lists[item.item];
+      currentItems = lists[item.item].data;
     }
 
     let doesCurrentItemExists = false;
@@ -104,8 +104,8 @@ function AnimeAdd({ animeOvrOrno, showAdd, animeToRender }) {
   return (
     <div
       className={animeOvrOrno ? "aniOvrAddDiv" : `aniCardAddDiv`}
-      onMouseEnter={() => isMobile === "desktop" && setShowAddDetails(true)}
-      onMouseLeave={() => isMobile === "desktop" && setShowAddDetails(false)}
+      onMouseEnter={() => setShowAddDetails(true)}
+      onMouseLeave={() => setShowAddDetails(false)}
     >
       <motion.div
         className={animeOvrOrno ? "ovrAddToWhat" : `addToWhat`}
@@ -134,15 +134,12 @@ function AnimeAdd({ animeOvrOrno, showAdd, animeToRender }) {
 
       <motion.div
         onClick={() => {
-          navigator.maxTouchPoints > 0 &&
-            !window.matchMedia("(pointer: fine)").matches &&
-            setShowAddDetails((prev) => !prev);
+          setShowAddDetails((prev) => !prev);
         }}
         className={animeOvrOrno ? "aniOvrAdd" : `aniCardAdd`}
         animate={
-          (navigator.maxTouchPoints > 0 &&
-            !window.matchMedia("(pointer: fine)").matches) ||
-          animeOvrOrno
+          navigator.maxTouchPoints > 0 ||
+          (!window.matchMedia("(pointer: fine)").matches && animeOvrOrno)
             ? { opacity: 1, scale: 1 }
             : showAdd
               ? { opacity: 1, scale: 1 }

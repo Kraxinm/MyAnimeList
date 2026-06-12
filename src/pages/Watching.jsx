@@ -7,7 +7,7 @@ import watchListFilterSearch from "../components/WatchListSearchFilter";
 function Watching() {
   let { lists } = useContext(watchListContext);
   const [watchlistQuerry, setWatchlistQuerry] = useState("");
-
+  const watching = lists.watching.data;
   return (
     <div className="listPadding">
       <WatchListSearch
@@ -15,13 +15,13 @@ function Watching() {
         setWatchListQuerry={setWatchlistQuerry}
         currentWatchList={"Watching"}
       />
-      {lists.watching && lists.watching.length > 0 && (
+      {watching && watching.length > 0 && (
         <AnimeRow
           rowNameDetails={{ status: false }}
           animeRowToRender={
             watchlistQuerry
-              ? watchListFilterSearch(lists.watching, watchlistQuerry)
-              : lists.watching
+              ? watchListFilterSearch(watching, watchlistQuerry)
+              : watching
           }
         />
       )}
