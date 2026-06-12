@@ -1,34 +1,36 @@
 function removeAnimeFromPrevList({animeToRender , item , dupedLists}){
   
 
- const  keys = []
+ let  keys = ''
   Object.values(dupedLists).forEach((currentList)=>{
 
-   if(currentList.key !=='favourites'){
-    currentList?.data?.forEach((currentAnime )=>{
+    currentList?.data?.some((currentAnime )=>{
        if(currentAnime?.id === animeToRender.id){
-        keys.push(currentList.key)
+   if(currentList.key !=='favourites' ){
+
+        keys = currentList?.key }
     }
-    })}
-     if(item.item !=='favourites'){
-        keys.forEach((forKey)=>{
+    })
+     if(item.item !=='favourites' && keys){
+        
  localStorage.setItem(
-        forKey,
+        keys,
         JSON.stringify(
-          dupedLists[forKey]?.data.filter(
+          dupedLists[keys]?.data.filter(
             (filterItem) => filterItem.id !== animeToRender.id,
           ),
         ),
       );
 
-      dupedLists[forKey] = {
+      dupedLists[keys] = {
         key: item.item,
-        data: JSON.parse(localStorage.getItem(forKey)),
+        data: JSON.parse(localStorage.getItem(keys)),
       };
-        })}
+        }
     
  }) 
 console.log(keys)
+keys = ''
 }
 
 export default removeAnimeFromPrevList
