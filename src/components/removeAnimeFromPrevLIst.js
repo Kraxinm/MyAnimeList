@@ -1,36 +1,25 @@
-function removeAnimeFromPrevList({animeToRender , item , dupedLists}){
-  
+function removeAnimeFromPrevList({ animeToRender, item, dupedLists }) {
+  let keys = "";
 
- let  keys = ''
-  Object.values(dupedLists).forEach((currentList)=>{
-
-    currentList?.data?.some((currentAnime )=>{
-       if(currentAnime?.id === animeToRender.id){
-   if(currentList.key !=='favourites' ){
-
-        keys = currentList?.key }
+  for (const currentList of Object.values(dupedLists)) {
+    const found = currentList?.data?.some(
+      (currentAnime) => currentAnime?.id === animeToRender.id,
+    );
+    if (found && currentList.key !== "favourites") {
+      keys = currentList.key;
+      break;
     }
-    })
-     if(item.item !=='favourites' && keys){
-        
- localStorage.setItem(
-        keys,
-        JSON.stringify(
-          dupedLists[keys]?.data.filter(
-            (filterItem) => filterItem.id !== animeToRender.id,
-          ),
-        ),
-      );
+  }
 
-      dupedLists[keys] = {
-        key: item.item,
-        data: JSON.parse(localStorage.getItem(keys)),
-      };
-        }
-    
- }) 
-console.log(keys)
-keys = ''
+  if (item !== "favourites" && keys) {
+    const updatedData = dupedLists[keys]?.data.filter(
+      (filterItem) => filterItem.id !== animeToRender.id,
+    );
+
+    localStorage.setItem(keys, JSON.stringify(updatedData));
+
+    dupedLists[keys] = { key: keys, data: updatedData };
+  }
 }
 
-export default removeAnimeFromPrevList
+export default removeAnimeFromPrevList;
